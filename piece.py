@@ -2,10 +2,11 @@ import os
 
 class Piece:
     def __init__(self, name, color, value, texture = None, texture_rect = None):
-        
-        value_sign = 1 if color == "white" else -1
+        self.name = name
+        self.color = color
+        value_sign = 1 if color == 'white' else -1
         self.value = value * value_sign
-        self.validmoves = []
+        self.moves = []
         self.moved = False
         self.texture = texture
         self.set_texture()
@@ -21,13 +22,10 @@ class Piece:
         
 
 class Pawn(Piece):
-
+    
     def __init__(self, color):
-        if color == "white":
-            self.dir = -1
-        else:
-            self.dir = 1
-        super().__init__("pawn", color, 1.0)
+        self.dir = -1 if color == 'white' else 1
+        super().__init__('pawn', color, 1.0)
 
 class Knight(Piece):
     def __init__(self, color):
